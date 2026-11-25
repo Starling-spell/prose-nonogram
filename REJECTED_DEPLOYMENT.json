@@ -1,0 +1,17 @@
+{
+  "network": "StudioNet",
+  "source_commit": "d18912796039259ff0da1f4bbf9fe39a28be7b9b",
+  "transactions": [
+    {
+      "step": "deploy",
+      "signer": "0x627bA8c481D77f27fB60E41Fcf2e8E62be9BfEE8",
+      "nonce": "0x0",
+      "functionName": "deploy",
+      "args": [],
+      "hash": "0xb67c2438bf78291b4985dbbdacb13e40a362fd7db7c377b5423cc5929f3b0a2c",
+      "envelope_status": "0x0",
+      "revert_reason": "FeesDistributionMissing"
+    }
+  ],
+  "puzzles": {}
+}

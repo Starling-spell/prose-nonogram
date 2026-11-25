@@ -33,3 +33,12 @@ python -m pip install -r requirements-dev.txt
 genvm-lint check contracts/ProseNonogram.py
 python -m pytest tests -q
 ```
+
+[Deployment and proof ledger](LIVE_PROOFS.md) · [Submission text](SUBMISSION.md)
+
+To replay the recorded receipts, deployed source check, and puzzle readbacks:
+
+```sh
+npm ci --ignore-scripts
+node scripts/live.mjs --verify-only
+```

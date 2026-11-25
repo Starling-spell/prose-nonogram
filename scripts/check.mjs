@@ -9,7 +9,7 @@ export const canonical=x=>x===null||typeof x!=='object'?JSON.stringify(x).replac
 export const sha=x=>crypto.createHash('sha256').update(x).digest('hex');
 export const digest=x=>sha(canonical(x));
 export async function rpc(method,params){
- if(!['eth_chainId','eth_getTransactionByHash','gen_getContractCode','eth_getTransactionCount','sim_getTransactionsForAddress','gen_call'].includes(method))throw Error('Read-only RPC methods only');
+ if(!['eth_chainId','eth_getBalance','eth_getTransactionByHash','eth_getTransactionReceipt','gen_getContractCode','eth_getTransactionCount','sim_getFeeConfig','gen_call'].includes(method))throw Error('Read-only RPC methods only');
  if(method==='gen_call'&&(params.length!==1||params[0]?.type!=='read'))throw Error('Only read-mode gen_call permitted');
  for(let attempt=0;attempt<3;attempt++)try{
   const r=await fetch('https://studio.genlayer.com/api',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method,params}),signal:AbortSignal.timeout(20000)});

@@ -53,15 +53,21 @@ async function transaction(step, account, functionName, args, error) {
     assert(!verifyOnly && account, 'Missing broadcast journal');
     const nonce = await rpc('eth_getTransactionCount', [account.address, 'latest']);
     assert.equal(await rpc('eth_getTransactionCount', [account.address, 'pending']), nonce);
-    entry = {step, signer: account.address, nonce, functionName, args, ...(error ? {error} : {})};
+    const {defaultFees: fees} = await rpc('sim_getFeeConfig', []);
+    assert(fees?.distribution);
+    const feeValue = BigInt(fees.feeValue);
+    assert(feeValue >= 0n && feeValue <= 1_000_000_000_000_000n, 'Studio quote exceeds demo budget');
+    assert(BigInt(await rpc('eth_getBalance', [account.address, 'latest'])) >= feeValue);
+    entry = {step, signer: account.address, nonce, functionName, args, fee_wei: String(feeValue),
+      ...(error ? {error} : {})};
     proof.transactions.push(entry);
     save();
     currentEntry = entry;
     const client = createClient({chain: studionet, account});
     const hash = functionName === 'deploy'
-      ? await client.deployContract({code: fs.readFileSync(code), args: [], leaderOnly: false})
+      ? await client.deployContract({code: fs.readFileSync(code), args: [], fees, leaderOnly: false})
       : await client.writeContract({
-        address: proof.address, functionName, args, value: 0n, leaderOnly: false,
+        address: proof.address, functionName, args, value: 0n, fees, leaderOnly: false,
       });
     assert.equal(hash, entry.hash);
     currentEntry = undefined;
@@ -77,6 +83,9 @@ async function transaction(step, account, functionName, args, error) {
   assert.equal(native.from_address.toLowerCase(), entry.signer.toLowerCase());
   assert.equal(BigInt(native.nonce), BigInt(entry.nonce));
   assert.equal(BigInt(native.value), 0n);
+  const envelope = await rpc('eth_getTransactionReceipt', [entry.hash]);
+  assert.equal(envelope.status, '0x1');
+  assert.equal(envelope.from.toLowerCase(), entry.signer.toLowerCase());
   console.log(step, entry.receipt.status, entry.receipt.execution);
   if (error) return;
   if (functionName === 'deploy') return {address: entry.receipt.address};
@@ -122,6 +131,24 @@ if (!verifyOnly) {
 }
 const account = verifyOnly ? null : createAccount();
 save();
+if (account) {
+  const config = await rpc('sim_getFeeConfig', []);
+  if (config.enabled) {
+    // Studio's built-in faucet credits only the temporary demo account with test GEN.
+    const amount = 10_000_000_000_000_000;
+    const response = await fetch('https://studio.genlayer.com/api', {
+      method: 'POST', headers: {'content-type': 'application/json'},
+      body: JSON.stringify({jsonrpc: '2.0', id: 1, method: 'sim_fundAccount', params: [account.address, amount]}),
+      signal: AbortSignal.timeout(20000),
+    });
+    const funded = await response.json();
+    assert(response.ok && !funded.error, 'Studio faucet request failed');
+    const balance = BigInt(await rpc('eth_getBalance', [account.address, 'latest']));
+    assert(balance >= BigInt(amount), 'Studio faucet did not credit the demo account');
+    proof.test_faucet = {address: account.address, requested_wei: String(amount)};
+    save();
+  }
+}
 const deployment = await transaction('deploy', account, 'deploy', []);
 proof.address = deployment.address;
 proof.source = await source(proof.address);

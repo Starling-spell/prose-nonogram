@@ -1,0 +1,271 @@
+{
+  "network": "StudioNet",
+  "source_commit": "d18912796039259ff0da1f4bbf9fe39a28be7b9b",
+  "transactions": [
+    {
+      "step": "deploy",
+      "signer": "0x1FfA92f32Fbc2426A2907790961026dA808586Ca",
+      "nonce": "0x0",
+      "functionName": "deploy",
+      "args": [],
+      "fee_wei": "78852000002588",
+      "hash": "0xbefc263197ea005754f8585f8d80fbda3a90979dbd62a3db9af3d344cd9a2432",
+      "receipt": {
+        "hash": "0xbefc263197ea005754f8585f8d80fbda3a90979dbd62a3db9af3d344cd9a2432",
+        "address": "0x66c2D199a6e29f16117744736068574622D13C87",
+        "status": "FINALIZED",
+        "execution": "SUCCESS",
+        "consensus": "MAJORITY_AGREE",
+        "committed": true,
+        "leader_only": false,
+        "initial_validators": 5,
+        "agree_votes": 3,
+        "idle_votes": 2,
+        "disagree_votes": 0,
+        "validator_execution_seen": true
+      }
+    },
+    {
+      "step": "cross",
+      "signer": "0x1FfA92f32Fbc2426A2907790961026dA808586Ca",
+      "nonce": "0x1",
+      "functionName": "compile_clues",
+      "args": [
+        "Starling-spell/prose-nonogram/d18912796039259ff0da1f4bbf9fe39a28be7b9b/fixtures/cross.json",
+        "09ad65fa2a2d468bb8e909ffda1271560ed531a64d1d8d44e9e381a1bf1ca0cc"
+      ],
+      "fee_wei": "78852000002588",
+      "hash": "0x5c0dd5c054bd7bcf347d0b44227fd4de16bfe562b12432643b21e5db13c91ed7",
+      "receipt": {
+        "hash": "0x5c0dd5c054bd7bcf347d0b44227fd4de16bfe562b12432643b21e5db13c91ed7",
+        "address": "0x66c2D199a6e29f16117744736068574622D13C87",
+        "status": "FINALIZED",
+        "execution": "SUCCESS",
+        "consensus": "MAJORITY_AGREE",
+        "committed": true,
+        "leader_only": false,
+        "initial_validators": 5,
+        "agree_votes": 3,
+        "idle_votes": 2,
+        "disagree_votes": 0,
+        "validator_execution_seen": true
+      }
+    },
+    {
+      "step": "two-options",
+      "signer": "0x1FfA92f32Fbc2426A2907790961026dA808586Ca",
+      "nonce": "0x2",
+      "functionName": "compile_clues",
+      "args": [
+        "Starling-spell/prose-nonogram/d18912796039259ff0da1f4bbf9fe39a28be7b9b/fixtures/two-options.json",
+        "47e3b65c47b7b006ced009030d04456a6f9428b00dd560aa53875677c0b50776"
+      ],
+      "fee_wei": "78852000002588",
+      "hash": "0xcf0aafea5d11c736afaa2eaea8fe87647c5bb4dbb6db9a6219ba3d8c972ae9b5",
+      "receipt": {
+        "hash": "0xcf0aafea5d11c736afaa2eaea8fe87647c5bb4dbb6db9a6219ba3d8c972ae9b5",
+        "address": "0x66c2D199a6e29f16117744736068574622D13C87",
+        "status": "FINALIZED",
+        "execution": "SUCCESS",
+        "consensus": "MAJORITY_AGREE",
+        "committed": true,
+        "leader_only": false,
+        "initial_validators": 5,
+        "agree_votes": 3,
+        "idle_votes": 2,
+        "disagree_votes": 0,
+        "validator_execution_seen": true
+      }
+    },
+    {
+      "step": "contradiction",
+      "signer": "0x1FfA92f32Fbc2426A2907790961026dA808586Ca",
+      "nonce": "0x3",
+      "functionName": "compile_clues",
+      "args": [
+        "Starling-spell/prose-nonogram/d18912796039259ff0da1f4bbf9fe39a28be7b9b/fixtures/contradiction.json",
+        "9f2b8fd1b3c275c586a79b798b02f480b36bca98d262a495de346ee203601ab9"
+      ],
+      "fee_wei": "78852000002588",
+      "hash": "0xe6a50a290ce75db1b96e8e20b445103581dc9675943ab117e8376f9c86dad3bf",
+      "receipt": {
+        "hash": "0xe6a50a290ce75db1b96e8e20b445103581dc9675943ab117e8376f9c86dad3bf",
+        "address": "0x66c2D199a6e29f16117744736068574622D13C87",
+        "status": "FINALIZED",
+        "execution": "SUCCESS",
+        "consensus": "MAJORITY_AGREE",
+        "committed": true,
+        "leader_only": false,
+        "initial_validators": 5,
+        "agree_votes": 3,
+        "idle_votes": 2,
+        "disagree_votes": 0,
+        "validator_execution_seen": true
+      }
+    }
+  ],
+  "puzzles": {
+    "cross": {
+      "key": "aa26ba40e43705d92177b071233801a7328518a9a1bd38914faa2df11eb2be08",
+      "record": {
+        "clues": {
+          "columns": [
+            [
+              1
+            ],
+            [
+              3
+            ],
+            [
+              1
+            ]
+          ],
+          "rows": [
+            [
+              1
+            ],
+            [
+              3
+            ],
+            [
+              1
+            ]
+          ],
+          "status": "READY"
+        },
+        "document": {
+          "clues": "The top row has one filled square. The middle row is entirely filled. The bottom row has one filled square. The left column has one filled square. The middle column is entirely filled. The right column has one filled square.",
+          "height": 3,
+          "width": 3
+        },
+        "result": {
+          "count": 1,
+          "fixed": [
+            ".#.",
+            "###",
+            ".#."
+          ],
+          "status": "UNIQUE"
+        },
+        "sha256": "09ad65fa2a2d468bb8e909ffda1271560ed531a64d1d8d44e9e381a1bf1ca0cc",
+        "text": "{\n  \"height\": 3,\n  \"width\": 3,\n  \"clues\": \"The top row has one filled square. The middle row is entirely filled. The bottom row has one filled square. The left column has one filled square. The middle column is entirely filled. The right column has one filled square.\"\n}\n",
+        "url": "https://raw.githubusercontent.com/Starling-spell/prose-nonogram/d18912796039259ff0da1f4bbf9fe39a28be7b9b/fixtures/cross.json"
+      }
+    },
+    "two-options": {
+      "key": "00b4041b56dbe31246d083d632e4cd70ece9dfe89e6295fac61ca00b69d9ee97",
+      "record": {
+        "clues": {
+          "columns": [
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              1
+            ]
+          ],
+          "rows": [
+            [
+              2
+            ],
+            [
+              2
+            ],
+            []
+          ],
+          "status": "READY"
+        },
+        "document": {
+          "clues": "The top row has one block of two adjacent filled squares. The middle row also has one block of two adjacent filled squares. The bottom row is empty. In the left column there is one filled square. In the middle column there is one block of two adjacent filled squares. In the right column there is one filled square.",
+          "height": 3,
+          "width": 3
+        },
+        "result": {
+          "count": 2,
+          "fixed": [
+            "?#?",
+            "?#?",
+            "..."
+          ],
+          "status": "AMBIGUOUS"
+        },
+        "sha256": "47e3b65c47b7b006ced009030d04456a6f9428b00dd560aa53875677c0b50776",
+        "text": "{\n  \"height\": 3,\n  \"width\": 3,\n  \"clues\": \"The top row has one block of two adjacent filled squares. The middle row also has one block of two adjacent filled squares. The bottom row is empty. In the left column there is one filled square. In the middle column there is one block of two adjacent filled squares. In the right column there is one filled square.\"\n}\n",
+        "url": "https://raw.githubusercontent.com/Starling-spell/prose-nonogram/d18912796039259ff0da1f4bbf9fe39a28be7b9b/fixtures/two-options.json"
+      }
+    },
+    "contradiction": {
+      "key": "302bbad08b988ba379eec0df6c85036aaafdb3b97edd6d6161fdb30bc20d3f71",
+      "record": {
+        "clues": {
+          "columns": [
+            [],
+            [
+              2
+            ],
+            [
+              1
+            ]
+          ],
+          "rows": [
+            [
+              3
+            ],
+            [],
+            []
+          ],
+          "status": "READY"
+        },
+        "document": {
+          "clues": "The top row is entirely filled, and the middle and bottom rows are entirely empty. The left column is entirely empty. The middle column has one block of two adjacent filled squares. The right column has one filled square.",
+          "height": 3,
+          "width": 3
+        },
+        "result": {
+          "count": 0,
+          "fixed": [],
+          "status": "INCONSISTENT"
+        },
+        "sha256": "9f2b8fd1b3c275c586a79b798b02f480b36bca98d262a495de346ee203601ab9",
+        "text": "{\n  \"height\": 3,\n  \"width\": 3,\n  \"clues\": \"The top row is entirely filled, and the middle and bottom rows are entirely empty. The left column is entirely empty. The middle column has one block of two adjacent filled squares. The right column has one filled square.\"\n}\n",
+        "url": "https://raw.githubusercontent.com/Starling-spell/prose-nonogram/d18912796039259ff0da1f4bbf9fe39a28be7b9b/fixtures/contradiction.json"
+      }
+    }
+  },
+  "test_faucet": {
+    "address": "0x1FfA92f32Fbc2426A2907790961026dA808586Ca",
+    "requested_wei": "10000000000000000"
+  },
+  "address": "0x66c2D199a6e29f16117744736068574622D13C87",
+  "source": {
+    "address": "0x66c2D199a6e29f16117744736068574622D13C87",
+    "source_match": true,
+    "sha256": "7c3dbd6e82eb42408c561456c4904b24200383ef3a1f5e74e83c4b98f5ab46a8"
+  },
+  "probes": [
+    {
+      "query": "#??/???/???",
+      "result": {
+        "count": 1,
+        "fixed": [
+          "##.",
+          ".##",
+          "..."
+        ],
+        "status": "UNIQUE"
+      }
+    },
+    {
+      "query": "?.?/???/???",
+      "result": {
+        "count": 0,
+        "fixed": [],
+        "status": "INCONSISTENT"
+      }
+    }
+  ],
+  "verified": true
+}
